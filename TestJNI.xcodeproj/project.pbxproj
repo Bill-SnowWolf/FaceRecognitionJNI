@@ -1,0 +1,373 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CFE141961ACB43A900B96267 /* TestJNI.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE141951ACB43A900B96267 /* TestJNI.h */; };
+		CFE141981ACB43A900B96267 /* TestJNI.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE141971ACB43A900B96267 /* TestJNI.m */; };
+		CFE1419E1ACB43A900B96267 /* libTestJNI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE141921ACB43A900B96267 /* libTestJNI.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFE1419F1ACB43A900B96267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFE1418A1ACB43A900B96267 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFE141911ACB43A900B96267;
+			remoteInfo = TestJNI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CFE141921ACB43A900B96267 /* libTestJNI.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTestJNI.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFE141951ACB43A900B96267 /* TestJNI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestJNI.h; sourceTree = "<group>"; };
+		CFE141971ACB43A900B96267 /* TestJNI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestJNI.m; sourceTree = "<group>"; };
+		CFE1419D1ACB43A900B96267 /* TestJNITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestJNITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFE141A31ACB43A900B96267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFE1418F1ACB43A900B96267 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFE1419A1ACB43A900B96267 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFE1419E1ACB43A900B96267 /* libTestJNI.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CFE141891ACB43A900B96267 = {
+			isa = PBXGroup;
+			children = (
+				CFE141941ACB43A900B96267 /* TestJNI */,
+				CFE141A11ACB43A900B96267 /* TestJNITests */,
+				CFE141931ACB43A900B96267 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CFE141931ACB43A900B96267 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFE141921ACB43A900B96267 /* libTestJNI.dylib */,
+				CFE1419D1ACB43A900B96267 /* TestJNITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFE141941ACB43A900B96267 /* TestJNI */ = {
+			isa = PBXGroup;
+			children = (
+				CFE141951ACB43A900B96267 /* TestJNI.h */,
+				CFE141971ACB43A900B96267 /* TestJNI.m */,
+			);
+			path = TestJNI;
+			sourceTree = "<group>";
+		};
+		CFE141A11ACB43A900B96267 /* TestJNITests */ = {
+			isa = PBXGroup;
+			children = (
+				CFE141A21ACB43A900B96267 /* Supporting Files */,
+			);
+			path = TestJNITests;
+			sourceTree = "<group>";
+		};
+		CFE141A21ACB43A900B96267 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFE141A31ACB43A900B96267 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CFE141901ACB43A900B96267 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFE141961ACB43A900B96267 /* TestJNI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CFE141911ACB43A900B96267 /* TestJNI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFE141A61ACB43A900B96267 /* Build configuration list for PBXNativeTarget "TestJNI" */;
+			buildPhases = (
+				CFE1418E1ACB43A900B96267 /* Sources */,
+				CFE1418F1ACB43A900B96267 /* Frameworks */,
+				CFE141901ACB43A900B96267 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestJNI;
+			productName = TestJNI;
+			productReference = CFE141921ACB43A900B96267 /* libTestJNI.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		CFE1419C1ACB43A900B96267 /* TestJNITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFE141A91ACB43A900B96267 /* Build configuration list for PBXNativeTarget "TestJNITests" */;
+			buildPhases = (
+				CFE141991ACB43A900B96267 /* Sources */,
+				CFE1419A1ACB43A900B96267 /* Frameworks */,
+				CFE1419B1ACB43A900B96267 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFE141A01ACB43A900B96267 /* PBXTargetDependency */,
+			);
+			name = TestJNITests;
+			productName = TestJNITests;
+			productReference = CFE1419D1ACB43A900B96267 /* TestJNITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFE1418A1ACB43A900B96267 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = SnowWolf;
+				TargetAttributes = {
+					CFE141911ACB43A900B96267 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					CFE1419C1ACB43A900B96267 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = CFE1418D1ACB43A900B96267 /* Build configuration list for PBXProject "TestJNI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CFE141891ACB43A900B96267;
+			productRefGroup = CFE141931ACB43A900B96267 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFE141911ACB43A900B96267 /* TestJNI */,
+				CFE1419C1ACB43A900B96267 /* TestJNITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFE1419B1ACB43A900B96267 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFE1418E1ACB43A900B96267 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFE141981ACB43A900B96267 /* TestJNI.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFE141991ACB43A900B96267 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFE141A01ACB43A900B96267 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFE141911ACB43A900B96267 /* TestJNI */;
+			targetProxy = CFE1419F1ACB43A900B96267 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CFE141A41ACB43A900B96267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CFE141A51ACB43A900B96267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CFE141A71ACB43A900B96267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CFE141A81ACB43A900B96267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CFE141AA1ACB43A900B96267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TestJNITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CFE141AB1ACB43A900B96267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TestJNITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFE1418D1ACB43A900B96267 /* Build configuration list for PBXProject "TestJNI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFE141A41ACB43A900B96267 /* Debug */,
+				CFE141A51ACB43A900B96267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFE141A61ACB43A900B96267 /* Build configuration list for PBXNativeTarget "TestJNI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFE141A71ACB43A900B96267 /* Debug */,
+				CFE141A81ACB43A900B96267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CFE141A91ACB43A900B96267 /* Build configuration list for PBXNativeTarget "TestJNITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFE141AA1ACB43A900B96267 /* Debug */,
+				CFE141AB1ACB43A900B96267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFE1418A1ACB43A900B96267 /* Project object */;
+}
