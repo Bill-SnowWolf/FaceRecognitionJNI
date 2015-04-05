@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>78DD87D9-B514-46C4-B147-26DCAC960BA7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FaceRecognitionJNI</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EFE0001266625CF4FA68F5D2307A24F47FE597D4</key>
+		<string>https://github.com/Bill-SnowWolf/FaceRecognitionJNI.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FaceRecognitionJNI.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EFE0001266625CF4FA68F5D2307A24F47FE597D4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Bill-SnowWolf/FaceRecognitionJNI.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EFE0001266625CF4FA68F5D2307A24F47FE597D4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EFE0001266625CF4FA68F5D2307A24F47FE597D4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FaceRecognitionJNI</string>
+		</dict>
+	</array>
+</dict>
+</plist>
