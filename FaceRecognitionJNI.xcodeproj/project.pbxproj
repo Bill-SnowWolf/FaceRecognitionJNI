@@ -435,8 +435,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/include,
 					/usr/local/include,
+					"/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/TestJNI";
 				PRODUCT_MODULE_NAME = FaceRecognition;
@@ -453,8 +453,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/include,
 					/usr/local/include,
+					"/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/TestJNI";
 				PRODUCT_MODULE_NAME = FaceRecognition;
