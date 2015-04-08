@@ -27,8 +27,6 @@ Mat faceDetection(const char* filename, const char* xmlPath, bool rsize) {
     vector<Rect> faces;
     faceDector.detectMultiScale(image, faces);
     
-    //    cout << "Detected " << faces.size() << " faces\n";
-    
     Rect cropRect = Rect(faces[0].x, faces[0].y, faces[0].width, faces[0].height);
     Mat headImage = cropImage(image, cropRect);
     
@@ -44,25 +42,6 @@ void saveImage(Mat image, char* filename) {
     imwrite(filename, image);
 }
 
-void showImage(Mat image) {
-    if (image.data) {
-        namedWindow("Dected Face", WINDOW_AUTOSIZE);
-        imshow("Face", image);
-        waitKey(0);
-    } else {
-        printf("No Face Dected\n");
-        return;
-    }
-}
-
-//void loadTrainImages(const vector<string> &imagePaths, vector<Mat> &trainImages, vector<int> &trainLabels) {
-//    for (string path: imagePaths) {
-//        trainImages.push_back(faceDetection(path, true));
-//        trainLabels.push_back(atoi(path.c_str()));
-//    }
-//}
-
-
 // JNI Interface
 
 JNIEXPORT void JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceDetection
@@ -76,9 +55,6 @@ JNIEXPORT void JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceD
     printf("Output Image Path: %s\n", outputImagePath);
     
     Mat face = faceDetection(inputImagePath, xmlFilePath, false);
-//    showImage(face);
-    //
-    //    if (argc == 3) {
     imwrite(outputImagePath, face);
 
     
@@ -96,7 +72,6 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceR
     for (int i=0;i<len;i++) {
         jstring body = (jstring)env->GetObjectArrayElement(trainingImagePaths, i);
         trainingImageNames.push_back(env->GetStringUTFChars(body, 0));
-//        cout << trainingImageNames[i] << endl;
     }
     
     const char *xmlFilePath = env->GetStringUTFChars(xmlPath, 0);
@@ -112,7 +87,15 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceR
     
     Mat testImage = faceDetection(testImageName, xmlFilePath, true);
     
-    Ptr<FaceRecognizer> model = createEigenFaceRecognizer();
+    Ptr<FaceRecognizer> model;
+    
+    // For smaller dataset, we use fisher face algorithm
+    // For larger dataset, we use eigen face algorithm
+    if (trainingImageNames.size() < 7 && trainingImageNames.size() > 2) {
+        model = createFisherFaceRecognizer();
+    } else {
+        model = createEigenFaceRecognizer();
+    }
     model->train(trainImages, trainLabels);
     
     int predictedLabel = -1;
@@ -126,6 +109,7 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceR
     env->ReleaseStringUTFChars(xmlPath, xmlFilePath);
     env->ReleaseStringUTFChars(testImagePath, testImageName);
     
+    // If the minConfidence is -1, then we do not care about confidence value
     if (minConfidence < 0 || confidence < minConfidence)
         return predictedLabel;
     else
