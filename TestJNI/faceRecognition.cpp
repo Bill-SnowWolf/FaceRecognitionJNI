@@ -175,6 +175,46 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testS
     return confidence < minConfidence ? predictedLabel : -1;
 }
 
+JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAllFaces
+(JNIEnv* env, jclass obj, jobjectArray jni_doubleIndexedImagePaths, jint minConfidence) {
+    int numSubjects = env->GetArrayLength(jni_doubleIndexedImagePaths);
+    
+    vector<Mat> trainingImages;
+    vector<int> trainingLabels;
+    
+    for (int i = 0; i < numSubjects; ++i) {
+        jobjectArray subjectImages = (jobjectArray)env->GetObjectArrayElement(jni_doubleIndexedImagePaths, i);
+        for (int j = 0; j < env->GetArrayLength(subjectImages); ++j) {
+            jstring element = (jstring)env->GetObjectArrayElement(subjectImages, j);
+            string imagePath = env->GetStringUTFChars(element, 0);
+            trainingImages.push_back(imread(imagePath, CV_LOAD_IMAGE_GRAYSCALE));
+            trainingLabels.push_back(i);
+//            cout << i << " is for " << imagePath << endl;
+        }
+        
+    }
+    
+    // Use last image and label for testing
+    Mat testImage = trainingImages[trainingImages.size() - 1];
+    int testLabel = trainingLabels[trainingLabels.size() - 1];
+    trainingImages.pop_back();
+    trainingLabels.pop_back();
+    
+    // Train recognizer with training data
+    Ptr<FaceRecognizer> recognizer = createEigenFaceRecognizer();
+    recognizer->train(trainingImages, trainingLabels);
+    
+    // Ask for prediction using test image
+    int predictedLabel = -1;
+    double confidence = 0.0;
+    recognizer->predict(testImage, predictedLabel, confidence);
+    
+    string result_message = format("Predicted class = %d / Actual class = %d, %f", predictedLabel, testLabel, confidence);
+    cout << result_message << endl;
+    
+    return confidence < minConfidence ? predictedLabel : -1;
+}
+
 
 int main() {
     return 0;

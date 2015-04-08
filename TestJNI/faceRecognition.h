@@ -31,6 +31,14 @@ extern "C" {
     JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testSingleFace
     (JNIEnv *, jclass, jobjectArray, jint);
     
+    /*
+     * Class:     edu_carleton_comp4601_finalproject_core_OpenCV
+     * Method:    testAllFaces
+     * Signature: ([[Ljava/lang/String;I)I
+     */
+    JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAllFaces
+    (JNIEnv *, jclass, jobjectArray, jint);
+    
 #ifdef __cplusplus
 }
 #endif
