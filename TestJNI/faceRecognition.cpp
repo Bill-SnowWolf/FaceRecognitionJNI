@@ -175,7 +175,7 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testS
     return confidence < minConfidence ? predictedLabel : -1;
 }
 
-JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAllFaces
+JNIEXPORT void JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAllFaces
 (JNIEnv* env, jclass obj, jobjectArray jni_doubleIndexedImagePaths, jint minConfidence) {
     int numSubjects = env->GetArrayLength(jni_doubleIndexedImagePaths);
     
@@ -191,28 +191,75 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testA
             trainingLabels.push_back(i);
 //            cout << i << " is for " << imagePath << endl;
         }
-        
     }
     
-    // Use last image and label for testing
-    Mat testImage = trainingImages[trainingImages.size() - 1];
-    int testLabel = trainingLabels[trainingLabels.size() - 1];
-    trainingImages.pop_back();
-    trainingLabels.pop_back();
+    for (int i = 0; i < numSubjects; ++i) {
+        // Remove the subject's last training image and use it for testing
+        int photosPerSubject = 10;
+        int imageIndex = photosPerSubject * i + photosPerSubject - 1;
+        Mat testImage = trainingImages[imageIndex];
+        int testLabel = trainingLabels[imageIndex];
+        trainingImages.erase(trainingImages.begin() + imageIndex);
+        trainingLabels.erase(trainingLabels.begin() + imageIndex);
+        
+        // Train the recognizer
+        Ptr<FaceRecognizer> recognizer = createEigenFaceRecognizer();
+        recognizer->train(trainingImages, trainingLabels);
+        
+        // Ask for prediction using test image
+        int predictedLabel = -1;
+        double confidence = 0.0;
+        recognizer->predict(testImage, predictedLabel, confidence);
+        
+        string result_message = format("Predicted class = %d / Actual class = %d, %f", predictedLabel, testLabel, confidence);
+        cout << result_message << endl;
+        
+        // Replace the training images at their original position
+        trainingImages.insert(trainingImages.begin() + imageIndex, testImage);
+        trainingLabels.insert(trainingLabels.begin() + imageIndex, testLabel);
+    }
+}
+
+JNIEXPORT void JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAgainstNonMatchingFaces
+(JNIEnv *env, jclass obj, jobjectArray jni_doubleIndexedImagePaths, jobjectArray jni_doubleIndexNonMatchingPaths)
+{
+    int numSubjects = env->GetArrayLength(jni_doubleIndexedImagePaths);
     
-    // Train recognizer with training data
+    vector<Mat> trainingImages;
+    vector<int> trainingLabels;
+    
+    // Add training images and labels to array
+    for (int i = 0; i < numSubjects; ++i) {
+        jobjectArray subjectImages = (jobjectArray)env->GetObjectArrayElement(jni_doubleIndexedImagePaths, i);
+        for (int j = 0; j < env->GetArrayLength(subjectImages); ++j) {
+            jstring element = (jstring)env->GetObjectArrayElement(subjectImages, j);
+            string imagePath = env->GetStringUTFChars(element, 0);
+            trainingImages.push_back(imread(imagePath, CV_LOAD_IMAGE_GRAYSCALE));
+            trainingLabels.push_back(i);
+        }
+    }
+    
+    // Train the recognizer
     Ptr<FaceRecognizer> recognizer = createEigenFaceRecognizer();
     recognizer->train(trainingImages, trainingLabels);
     
-    // Ask for prediction using test image
-    int predictedLabel = -1;
-    double confidence = 0.0;
-    recognizer->predict(testImage, predictedLabel, confidence);
-    
-    string result_message = format("Predicted class = %d / Actual class = %d, %f", predictedLabel, testLabel, confidence);
-    cout << result_message << endl;
-    
-    return confidence < minConfidence ? predictedLabel : -1;
+    // Loop throught the non-matching paths and test using one image per subject
+    int numNonMatches = env->GetArrayLength(jni_doubleIndexNonMatchingPaths);
+    for (int i = 0; i < numNonMatches; ++i) {
+        jobjectArray subjectImages = (jobjectArray)env->GetObjectArrayElement(jni_doubleIndexNonMatchingPaths, i);
+        for (int j = 0; j < env->GetArrayLength(subjectImages); ++j) {
+            jstring element = (jstring)env->GetObjectArrayElement(subjectImages, j);
+            string imagePath = env->GetStringUTFChars(element, 0);
+            Mat testImage = imread(imagePath, CV_LOAD_IMAGE_GRAYSCALE);
+            
+            int predictedLabel = -1;
+            double confidence = 0.0;
+            recognizer->predict(testImage, predictedLabel, confidence);
+            
+            string result_message = format("Predicted class = %d / Actual class = N/A, %f", predictedLabel, confidence);
+            cout << result_message << endl;
+        }
+    }
 }
 
 

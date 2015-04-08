@@ -34,10 +34,18 @@ extern "C" {
     /*
      * Class:     edu_carleton_comp4601_finalproject_core_OpenCV
      * Method:    testAllFaces
-     * Signature: ([[Ljava/lang/String;I)I
+     * Signature: ([[Ljava/lang/String;I)V
      */
-    JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAllFaces
+    JNIEXPORT void JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAllFaces
     (JNIEnv *, jclass, jobjectArray, jint);
+    
+    /*
+     * Class:     edu_carleton_comp4601_finalproject_core_OpenCV
+     * Method:    testAgainstNonMatchingFaces
+     * Signature: ([[Ljava/lang/String;[[Ljava/lang/String;)V
+     */
+    JNIEXPORT void JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testAgainstNonMatchingFaces
+    (JNIEnv *, jclass, jobjectArray, jobjectArray);
     
 #ifdef __cplusplus
 }
