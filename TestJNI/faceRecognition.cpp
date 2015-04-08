@@ -15,6 +15,8 @@ Mat cropImage(Mat bigImage, Rect rect) {
 }
 
 Mat faceDetection(const char* filename, const char* xmlPath, bool rsize) {
+    cout << "Face File Name: " << filename << endl;
+    
     Mat image;
     image = imread( filename, 0 );
     
@@ -103,11 +105,10 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceR
     vector<Mat> trainImages;
     vector<int> trainLabels;
     
-    for (string path: trainingImageNames) {
-        trainImages.push_back(faceDetection(path.c_str(), xmlFilePath, true));
-        trainLabels.push_back(atoi(path.c_str()));
+    for (int i=0;i<trainingImageNames.size();i++) {
+        trainImages.push_back(faceDetection(trainingImageNames[i].c_str(), xmlFilePath, true));
+        trainLabels.push_back(i);
     }
-    printf("Done.");
     
     Mat testImage = faceDetection(testImageName, xmlFilePath, true);
     
@@ -125,7 +126,7 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceR
     env->ReleaseStringUTFChars(xmlPath, xmlFilePath);
     env->ReleaseStringUTFChars(testImagePath, testImageName);
     
-    if (confidence < minConfidence)
+    if (minConfidence < 0 || confidence < minConfidence)
         return predictedLabel;
     else
         return -1;
