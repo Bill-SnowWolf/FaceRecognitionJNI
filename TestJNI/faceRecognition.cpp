@@ -131,6 +131,50 @@ JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_faceR
         return -1;
 }
 
+JNIEXPORT jint JNICALL Java_edu_carleton_comp4601_finalproject_core_OpenCV_testSingleFace
+(JNIEnv * env, jclass obj, jobjectArray jni_trainingImagePaths, jint minConfidence) {
+    
+    int numImages = env->GetArrayLength(jni_trainingImagePaths);
+    if (numImages < 3) {
+        cout << "To test on a single face, provide at least three images or more." << endl;
+        exit(1);
+    }
+
+    // Load array with specified images; use paths as labels
+    vector<Mat> trainingImages;
+    vector<int> trainingLabels;
+    for (int i = 0; i < numImages; ++i) {
+        jstring element = (jstring)env->GetObjectArrayElement(jni_trainingImagePaths, i);
+        string imagePath = env->GetStringUTFChars(element, 0);
+        
+        // The AT&T Database of Faces are entirely grayscale and this must be specified.
+        trainingImages.push_back(imread(imagePath, CV_LOAD_IMAGE_GRAYSCALE));
+        
+        // We're testing with one person's face so the label is the same for each image.
+        trainingLabels.push_back(0);
+    }
+    
+    // Use last image and label for testing
+    Mat testImage = trainingImages[trainingImages.size() - 1];
+    int testLabel = trainingLabels[trainingLabels.size() - 1];
+    trainingImages.pop_back();
+    trainingLabels.pop_back();
+    
+    // Train recognizer with training data
+    Ptr<FaceRecognizer> recognizer = createEigenFaceRecognizer();
+    recognizer->train(trainingImages, trainingLabels);
+    
+    // Ask for prediction using test image
+    int predictedLabel = -1;
+    double confidence = 0.0;
+    recognizer->predict(testImage, predictedLabel, confidence);
+    
+    string result_message = format("Predicted class = %d / Actual class = %d, %f", predictedLabel, testLabel, confidence);
+    cout << result_message << endl;
+    
+    return confidence < minConfidence ? predictedLabel : -1;
+}
+
 
 int main() {
     return 0;
